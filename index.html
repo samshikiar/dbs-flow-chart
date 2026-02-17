@@ -1,271 +1,77 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DBS Properties - Flip Project Lifecycle</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600;700&display=swap');
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        :root {
-            --primary: #0A2F51;
-            --secondary: #0E5E8C;
-            --accent: #D4A574;
-            --bg: #FAFBFC;
-            --card-bg: #FFFFFF;
-            --text: #1A2332;
-            --text-light: #64748B;
-            --border: #E2E8F0;
-        }
-        
-        body {
-            font-family: 'Outfit', sans-serif;
-            background: linear-gradient(135deg, #FAFBFC 0%, #F1F5F9 100%);
-            color: var(--text);
-            line-height: 1.6;
-            padding: 40px 20px;
-            min-height: 100vh;
-        }
-        
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-        
-        header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-        
-        h1 {
-            font-family: 'DM Serif Display', serif;
-            font-size: 3rem;
-            color: var(--primary);
-            margin-bottom: 12px;
-            font-weight: 400;
-        }
-        
-        .subtitle {
-            font-size: 1.1rem;
-            color: var(--text-light);
-            font-weight: 300;
-        }
-        
-        .phase-card {
-            background: var(--card-bg);
-            border-radius: 16px;
-            padding: 32px;
-            box-shadow: 0 4px 6px rgba(10, 47, 81, 0.04);
-            border: 2px solid var(--border);
-            margin-bottom: 24px;
-            position: relative;
-        }
-        
-        .phase-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 6px;
-            height: 100%;
-            background: var(--accent);
-        }
-        
-        .phase-header {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            margin-bottom: 20px;
-        }
-        
-        .phase-number {
-            width: 56px;
-            height: 56px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            color: white;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 1.5rem;
-        }
-        
-        .phase-title {
-            font-family: 'DM Serif Display', serif;
-            font-size: 1.8rem;
-            color: var(--primary);
-            font-weight: 400;
-        }
-        
-        .phase-duration {
-            font-size: 0.9rem;
-            color: var(--text-light);
-        }
-        
-        .phase-description {
-            color: var(--text);
-            margin-bottom: 24px;
-            line-height: 1.7;
-        }
-        
-        .key-items {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 12px;
-        }
-        
-        .key-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            padding: 12px;
-            background: var(--bg);
-            border-radius: 8px;
-            border: 1px solid var(--border);
-        }
-        
-        .key-item.clickable {
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-        
-        .key-item.clickable:hover {
-            background: white;
-            border-color: var(--accent);
-            transform: translateX(4px);
-        }
-        
-        .key-item-icon {
-            width: 24px;
-            height: 24px;
-            background: var(--accent);
-            color: white;
-            border-radius: 6px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.8rem;
-            flex-shrink: 0;
-            font-weight: 600;
-        }
-        
-        .key-item-text {
-            flex: 1;
-            font-size: 0.95rem;
-            color: var(--text);
-        }
-        
-        .key-item-link {
-            color: var(--secondary);
-            font-size: 0.85rem;
-            font-weight: 500;
-        }
-        
-        .clickable-card {
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .clickable-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 24px rgba(10, 47, 81, 0.12);
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <header>
-            <h1>DBS Properties</h1>
-            <p class="subtitle">Flip Project Lifecycle · Acquisition to Disposition</p>
-        </header>
-        
-        <!-- PHASE 1 -->
-        <div class="phase-card clickable-card" onclick="openLink('underwriting-checklist')">
-            <div class="phase-header">
-                <div class="phase-number">1</div>
-                <div>
-                    <h2 class="phase-title">Deal Sourcing & Underwriting</h2>
-                    <p class="phase-duration">Timeline: 1-7 days</p>
-                </div>
-            </div>
-            <p class="phase-description">
-                Identify potential properties, run financial analysis, and determine if the deal meets DBS investment criteria.
-            </p>
-            <div class="key-items">
-                <div class="key-item clickable" onclick="event.stopPropagation(); openLink('propwire')">
-                    <div class="key-item-icon">📄</div>
-                    <div class="key-item-text">
-                        Run comparative market analysis (ARV estimation)
-                        <div class="key-item-link">→ Open PropWire</div>
-                    </div>
-                </div>
-                <div class="key-item clickable" onclick="event.stopPropagation(); openLink('renovation-guide')">
-                    <div class="key-item-icon">📄</div>
-                    <div class="key-item-text">
-                        Estimate renovation costs (standardized scope)
-                        <div class="key-item-link">→ Open Renovation Cost Guide</div>
-                    </div>
-                </div>
-                <div class="key-item clickable" onclick="event.stopPropagation(); openLink('underwriting-model')">
-                    <div class="key-item-icon">📄</div>
-                    <div class="key-item-text">
-                        Complete underwriting model (holding costs, financing, exit strategy)
-                        <div class="key-item-link">→ Open Underwriting Calculator</div>
-                    </div>
-                </div>
-                <div class="key-item clickable" onclick="event.stopPropagation(); openLink('jurisdiction')">
-                    <div class="key-item-icon">📄</div>
-                    <div class="key-item-text">
-                        Verify city vs. county jurisdiction for property
-                        <div class="key-item-link">→ Open St. Louis Property Lookup</div>
-                    </div>
-                </div>
-                <div class="key-item clickable" onclick="event.stopPropagation(); openLink('deal-summary')">
-                    <div class="key-item-icon">📋</div>
-                    <div class="key-item-text">
-                        Prepare deal summary for ownership review
-                        <div class="key-item-link">→ Download Template</div>
-                    </div>
-                </div>
-                <div class="key-item clickable" onclick="event.stopPropagation(); openLink('go-no-go')">
-                    <div class="key-item-icon">📅</div>
-                    <div class="key-item-text">
-                        Go/No-Go decision with ownership team
-                        <div class="key-item-link">→ Schedule Meeting</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-    </div>
-    
-    <script>
-        // YOUR LINKS
-        const LINKS = {
-            'underwriting-checklist': 'https://docs.google.com/document/d/14_F5yzPpMMBH2Sv_WNr5yHA6ZP8-qoTzf0vakiBhI28/edit?tab=t.0',
-            'propwire': 'https://www.propwire.com',
-            'renovation-guide': 'https://samshikiar.github.io/dbs-renovation-cost/',
-            'underwriting-model': 'https://docs.google.com/spreadsheets/d/18zJrEb01IUDoKzY35qJwd_bmAwJLpxfn/edit?gid=324220438#gid=324220438',
-            'jurisdiction': 'https://data-stlcogis.opendata.arcgis.com/app/property-lookup',
-            'deal-summary': 'https://docs.google.com/document/d/1z5oDyCi8CTWoOixS84V1ToytShU3KXOy/edit',
-            'go-no-go': 'https://meet.google.com/landing?authuser=0'
-        };
-        
-        function openLink(key) {
-            const url = LINKS[key];
-            if (url && url.startsWith('http')) {
-                window.open(url, '_blank');
-            } else {
-                alert('Link not configured for: ' + key);
-            }
-        }
-    </script>
-</body>
-</html>
+DBS Properties
+Flip Project Lifecycle · Acquisition to Disposition
+1
+Deal Sourcing & Underwriting
+Timeline: 1-7 days
+Identify potential properties, run financial analysis, and determine if the deal meets DBS investment criteria.
+📄
+Run comparative market analysis (ARV estimation)
+→ Open PropWire
+📄
+Estimate renovation costs (standardized scope)
+→ Open Renovation Cost Guide
+📄
+Complete underwriting model (holding costs, financing, exit strategy)
+→ Open Underwriting Calculator
+📄
+Verify city vs. county jurisdiction for property
+→ Open St. Louis Property Lookup
+🔨
+Schedule contractor walkthrough for real estimate
+→ Open Contractor List
+📋
+Prepare deal summary for ownership review
+→ Open Template
+📅
+Go/No-Go decision with ownership team
+→ Schedule Meeting
+2
+Acquisition & Contract
+Timeline: 7-30 days
+Execute the purchase, secure financing, complete due diligence, and set up contractor agreements and financial tracking.
+📝
+Submit offer and negotiate terms (agent handles)
+→ No link needed
+💰
+Set up project P&L (before closing)
+→ Open P&L Template
+🔍
+Order title search & insurance (verify clean title)
+→ Reminder
+✅
+Check for code violations & open permits
+→ Permitting Portal Links
+📏
+Order survey (if needed for unclear property lines)
+→ Reminder
+🏠
+Close transaction (final walkthrough, receive keys)
+→ Closing Checklist
+📋
+Execute contractor agreement with milestone payments
+→ Contractor Agreement Template
+3
+Project Startup
+Timeline: Day 1-7 after closing
+Get from closing to contractor working ASAP. Every day counts — minimize holding costs by executing all startup tasks immediately.
+🔐
+Change locks & secure property (Day 1)
+→ Reminder
+📷
+Take comprehensive before photos (Day 1)
+→ Reminder
+⚡
+Turn on utilities (Electric, Gas, Water, Sewer)
+→ St. Louis Operations Manual
+🛡️
+Set up property insurance (Builder's Risk / Vacant)
+→ St. Louis Operations Manual
+📋
+Pull necessary permits (building, demo, electrical, plumbing)
+→ St. Louis Operations Manual
+🗑️
+Order dumpster (if demo work required)
+→ Reminder
+📊
+Set up project status tracker & confirm contractor start date
+→ Project Status Tracker
