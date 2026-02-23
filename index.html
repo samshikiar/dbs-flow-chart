@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DBS Properties - Flip Project Lifecycle</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #0A2F51;
+            --secondary: #0E5E8C;
+            --accent: #D4A574;
+            --bg: #FAFBFC;
+            --card-bg: #FFFFFF;
+            --text: #1A2332;
+            --text-light: #64748B;
+            --border: #E2E8F0;
+        }
+        
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: linear-gradient(135deg, #FAFBFC 0%, #F1F5F9 100%);
+            color: var(--text);
+            line-height: 1.6;
+            padding: 40px 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        h1 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 12px;
+            font-weight: 400;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            font-weight: 300;
+        }
+        
+        .phase-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 32px;
+            box-shadow: 0 4px 6px rgba(10, 47, 81, 0.04);
+            border: 2px solid var(--border);
+            margin-bottom: 24px;
+            position: relative;
+        }
+        
+        .phase-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 6px;
+            height: 100%;
+            background: var(--accent);
+        }
+        
+        .phase-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .phase-number {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+        
+        .phase-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.8rem;
+            color: var(--primary);
+            font-weight: 400;
+        }
+        
+        .phase-duration {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+        
+        .phase-description {
+            color: var(--text);
+            margin-bottom: 24px;
+            line-height: 1.7;
+        }
+        
+        .key-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 12px;
+        }
+        
+        .key-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 12px;
+            background: var(--bg);
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+        
+        .key-item.clickable {
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .key-item.clickable:hover {
+            background: white;
+            border-color: var(--accent);
+            transform: translateX(4px);
+        }
+        
+        .key-item-icon {
+            width: 24px;
+            height: 24px;
+            background: var(--accent);
+            color: white;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            flex-shrink: 0;
+            font-weight: 600;
+        }
+        
+        .key-item-text {
+            flex: 1;
+            font-size: 0.95rem;
+            color: var(--text);
+        }
+        
+        .key-item-link {
+            color: var(--secondary);
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        
+        .clickable-card {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .clickable-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(10, 47, 81, 0.12);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>DBS Properties</h1>
+            <p class="subtitle">Flip Project Lifecycle · Acquisition to Disposition</p>
+        </header>
+        
+        <!-- PHASE 1 -->
+        <div class="phase-card clickable-card" onclick="openLink('underwriting-checklist')">
+            <div class="phase-header">
+                <div class="phase-number">1</div>
+                <div>
+                    <h2 class="phase-title">Deal Sourcing & Underwriting</h2>
+                    <p class="phase-duration">Timeline: 1-7 days</p>
+                </div>
+            </div>
+            <p class="phase-description">
+                Identify potential properties, run financial analysis, and determine if the deal meets DBS investment criteria.
+            </p>
+            <div class="key-items">
+                <div class="key-item clickable" onclick="event.stopPropagation(); openLink('propwire')">
+                    <div class="key-item-icon">📄</div>
+                    <div class="key-item-text">
+                        Run comparative market analysis (ARV estimation)
+                        <div class="key-item-link">→ Open PropWire</div>
+                    </div>
+                </div>
+                <div class="key-item clickable" onclick="event.stopPropagation(); openLink('renovation-guide')">
+                    <div class="key-item-icon">📄</div>
+                    <div class="key-item-text">
+                        Estimate renovation costs (standardized scope)
+                        <div class="key-item-link">→ Open Renovation Cost Guide</div>
+                    </div>
+                </div>
+                <div class="key-item clickable" onclick="event.stopPropagation(); openLink('underwriting-model')">
+                    <div class="key-item-icon">📄</div>
+                    <div class="key-item-text">
+                        Complete underwriting model (holding costs, financing, exit strategy)
+                        <div class="key-item-link">→ Open Underwriting Calculator</div>
+                    </div>
+                </div>
+                <div class="key-item clickable" onclick="event.stopPropagation(); openLink('jurisdiction')">
+                    <div class="key-item-icon">📄</div>
+                    <div class="key-item-text">
+                        Verify city vs. county jurisdiction for property
+                        <div class="key-item-link">→ Open St. Louis Property Lookup</div>
+                    </div>
+                </div>
+                <div class="key-item clickable" onclick="event.stopPropagation(); openLink('contractor-walkthrough')">
+                    <div class="key-item-icon">🔨</div>
+                    <div class="key-item-text">
+                        Schedule contractor walkthrough for real estimate
+                        <div class="key-item-link">→ Open Contractor List</div>
+                    </div>
+                </div>
+                <div class="key-item clickable" onclick="event.stopPropagation(); openLink('deal-summary')">
+                    <div class="key-item-icon">📋</div>
+                    <div class="key-item-text">
+                        Prepare deal summary for ownership review
+                        <div class="key-item-link">→ Open Template</div>
+                    </div>
+                </div>
+                <div class="key-item clickable" onclick="event.stopPropagation(); openLink('go-no-go')">
+                    <div class="key-item-icon">📅</div>
+                    <div class="key-item-text">
+                        Go/No-Go decision with ownership team
+                        <div class="key-item-link">→ Schedule Meeting</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- PHASE 2 -->
+        <div class="phase-card clickable-card" onclick="openLink('phase2-main')">
+            <div class="phase-header">
+                <div class="phase-number">2</div>
+                <div>
+                    <h2 class="phase-title">Acquisition & Contract</h2>
+                    <p class="phase-duration">Timeline: 7-30 days</p>
+                </div>
+            </div>
+            <p class="phase-description">
+                Execute the purchase, secure financing, complete due diligence, and set up contractor agreements and financial tracking.
+            </p>
+            <div class="key-items">
+                <div class="key-item clickable" onclick="event.stopPropagation(); openLink('submit-offer')">
+                    <div class="key-item-icon">📝</div>
+                    <div class="key-item-text">
+                        Submit offer and negotiate terms (agent handles)
+                        <div class="key-item-link">→ No link needed</div>
+                    </div>
+                </div>
+                <div class="key-item clickable" onclick="event.stopPropagation(); openLink('project-pl')">
+                    <div class="key-item-icon">💰</div>
+                    <div class="key-item-text">
+                        Set up project P&L (before closing)
+                        <div class="key-item-link">→ Open P&L Template</div>
+                    </div>
+                </div>
+                <div class="key-item clickable" onclick="event.stopPropagation(); openLink('title-search')">
+                    <div class="key-item-icon">🔍</div>
+                    <div class="key-item-text">
+                        Order title search & insurance (verify clean title)
+                        <div class="key-item-link">→ Reminder</div>
+                    </div>
+                </div>
+                <div class="key-item clickable" onclick="event.stopPropagation(); openLink('due-diligence')">
+                    <div class="key-item-icon">✅</div>
+                    <div class="key-item-text">
+                        Check for code violations & open permits
+                        <div class="key-item-link">→ Permitting Portal Links</div>
+                    </div>
+                </div>
+                <div class="key-item clickable" onclick="event.stopPropagation(); openLink('due-diligence')">
+                    <div class="key-item-icon">📏</div>
+                    <div class="key-item-text">
+                        Order survey (if needed for unclear property lines)
+                        <div class="key-item-link">→ Reminder</div>
+                    </div>
+                </div>
+                <div class="key-item clickable" onclick="event.stopPropagation(); openLink('closing')">
+                    <div class="key-item-icon">🏠</div>
+                    <div class="key-item-text">
+                        Close transaction (final walkthrough, receive keys)
+                        <div class="key-item-link">→ Closing Checklist</div>
+                    </div>
+                </div>
+                <div class="key-item clickable" onclick="event.stopPropagation(); openLink('contractor-agreement')">
+                    <div class="key-item-icon">📋</div>
+                    <div class="key-item-text">
+                        Execute contractor agreement with milestone payments
+                        <div class="key-item-link">→ Contractor Agreement Template</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- PHASE 3 -->
+        <div class="phase-card clickable-card" onclick="openLink('phase3-main')">
+            <div class="phase-header">
+                <div class="phase-number">3</div>
+                <div>
+                    <h2 class="phase-title">Project Startup</h2>
+                    <p class="phase-duration">Timeline: Day 1-7 after closing</p>
+                </div>
+            </div>
+            <p class="phase-description">
+                Get from closing to contractor working ASAP. Every day counts — minimize holding costs by executing all startup tasks immediately.
+            </p>
+            <div class="key-items">
+                <div class="key-item clickable" onclick="event.stopPropagation(); openLink('change-locks')">
+                    <div class="key-item-icon">🔐</div>
+                    <div class="key-item-text">
+                        Change locks & secure property (Day 1)
+                        <div class="key-item-link">→ Reminder</div>
+                    </div>
+                </div>
+                <div class="key-item clickable" onclick="event.stopPropagation(); openLink('property-photos')">
+                    <div class="key-item-icon">📷</div>
+                    <div class="key-item-text">
+                        Take comprehensive before photos (Day 1)
+                        <div class="key-item-link">→ Reminder</div>
+                    </div>
+                </div>
+                <div class="key-item clickable" onclick="event.stopPropagation(); openLink('utilities')">
+                    <div class="key-item-icon">⚡</div>
+                    <div class="key-item-text">
+                        Turn on utilities (Electric, Gas, Water, Sewer)
+                        <div class="key-item-link">→ St. Louis Operations Manual</div>
+                    </div>
+                </div>
+                <div class="key-item clickable" onclick="event.stopPropagation(); openLink('insurance')">
+                    <div class="key-item-icon">🛡️</div>
+                    <div class="key-item-text">
+                        Set up property insurance (Builder's Risk / Vacant)
+                        <div class="key-item-link">→ St. Louis Operations Manual</div>
+                    </div>
+                </div>
+                <div class="key-item clickable" onclick="event.stopPropagation(); openLink('permits')">
+                    <div class="key-item-icon">📋</div>
+                    <div class="key-item-text">
+                        Pull necessary permits (building, demo, electrical, plumbing)
+                        <div class="key-item-link">→ St. Louis Operations Manual</div>
+                    </div>
+                </div>
+                <div class="key-item clickable" onclick="event.stopPropagation(); openLink('dumpster')">
+                    <div class="key-item-icon">🗑️</div>
+                    <div class="key-item-text">
+                        Order dumpster (if demo work required)
+                        <div class="key-item-link">→ Reminder</div>
+                    </div>
+                </div>
+                <div class="key-item clickable" onclick="event.stopPropagation(); openLink('project-tracker')">
+                    <div class="key-item-icon">📊</div>
+                    <div class="key-item-text">
+                        Set up project status tracker & confirm contractor start date
+                        <div class="key-item-link">→ Project Status Tracker</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- PHASE 4 -->
+        <div class="phase-card clickable-card" onclick="openLink('phase4-main')">
+            <div class="phase-header">
+                <div class="phase-number">4</div>
+                <div>
+                    <h2 class="phase-title">Renovation & Construction</h2>
+                    <p class="phase-duration">Timeline: 30-90 days (property dependent)</p>
+                </div>
+            </div>
+            <p class="phase-description">
+                Execute the renovation systematically. Track progress weekly, manage contractor accountability, prevent scope creep, and ensure quality at every milestone.
+            </p>
+            <div class="key-items">
+                <div class="key-item clickable" onclick="event.stopPropagation(); openLink('kickoff-meeting')">
+                    <div class="key-item-icon">🤝</div>
+                    <div class="key-item-text">
+                        Contractor kickoff meeting (confirm scope, timeline, materials)
+                        <div class="key-item-link">→ Kickoff Checklist</div>
+                    </div>
+                </div>
+                <div class="key-item clickable" onclick="event.stopPropagation(); openLink('material-selection')">
+                    <div class="key-item-icon">🎨</div>
+                    <div class="key-item-text">
+                        Finalize all material selections (PM Julie approves before ordering)
+                        <div class="key-item-link">→ Material Selection Log</div>
+                    </div>
+                </div>
+                <div class="key-item clickable" onclick="event.stopPropagation(); openLink('weekly-progress')">
+                    <div class="key-item-icon">📊</div>
+                    <div class="key-item-text">
+                        Track weekly progress (photos, PM walkthrough, site condition)
+                        <div class="key-item-link">→ Weekly Progress Tracker</div>
+                    </div>
+                </div>
+                <div class="key-item clickable" onclick="event.stopPropagation(); openLink('subcontractor-tracking')">
+                    <div class="key-item-icon">👷</div>
+                    <div class="key-item-text">
+                        Track subcontractors on site (licenses, insurance, accountability)
+                        <div class="key-item-link">→ Subcontractor Tracking</div>
+                    </div>
+                </div>
+                <div class="key-item clickable" onclick="event.stopPropagation(); openLink('site-management')">
+                    <div class="key-item-icon">🏗️</div>
+                    <div class="key-item-text">
+                        Weekly site management check (dumpster, parking, cleanliness)
+                        <div class="key-item-link">→ Site Management Checklist</div>
+                    </div>
+                </div>
+                <div class="key-item clickable" onclick="event.stopPropagation(); openLink('milestone-payments')">
+                    <div class="key-item-icon">💰</div>
+                    <div class="key-item-text">
+                        Release milestone payments (only after checklist sign-off + lien waiver)
+                        <div class="key-item-link">→ Milestone Payment Checklist</div>
+                    </div>
+                </div>
+                <div class="key-item clickable" onclick="event.stopPropagation(); openLink('change-orders')">
+                    <div class="key-item-icon">📝</div>
+                    <div class="key-item-text">
+                        Manage scope changes (formal change order required for any deviation)
+                        <div class="key-item-link">→ Change Order Template</div>
+                    </div>
+                </div>
+                <div class="key-item clickable" onclick="event.stopPropagation(); openLink('photo-documentation')">
+                    <div class="key-item-icon">📷</div>
+                    <div class="key-item-text">
+                        Document with photos (before, during, after every phase)
+                        <div class="key-item-link">→ Photo Documentation Guide</div>
+                    </div>
+                </div>
+                <div class="key-item clickable" onclick="event.stopPropagation(); openLink('punch-list')">
+                    <div class="key-item-icon">✅</div>
+                    <div class="key-item-text">
+                        Manage punch list (final items with deadlines, no 95% done limbo)
+                        <div class="key-item-link">→ Punch List Tracker</div>
+                    </div>
+                </div>
+                <div class="key-item clickable" onclick="event.stopPropagation(); openLink('quality-control')">
+                    <div class="key-item-icon">🔍</div>
+                    <div class="key-item-text">
+                        Final quality control inspection (Julie walks property before listing)
+                        <div class="key-item-link">→ Quality Control Checklist</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- PHASE 5 -->
+        <div class="phase-card clickable-card" onclick="openLink('phase5-main')">
+            <div class="phase-header">
+                <div class="phase-number">5</div>
+                <div>
+                    <h2 class="phase-title">Marketing & Sale Prep</h2>
+                    <p class="phase-duration">Timeline: 3-7 days</p>
+                </div>
+            </div>
+            <p class="phase-description">
+                Transition from construction complete to listed for sale. Julie coordinates staging, photography, and listing while ensuring occupancy permit is in place.
+            </p>
+            <div class="key-items">
+                <div class="key-item clickable" onclick="event.stopPropagation(); openLink('handoff-checklist')">
+                    <div class="key-item-icon">🔄</div>
+                    <div class="key-item-text">
+                        Complete construction-to-listing handoff (punch list 100%, permits done)
+                        <div class="key-item-link">→ Handoff Checklist</div>
+                    </div>
+                </div>
+                <div class="key-item clickable" onclick="event.stopPropagation(); openLink('occupancy-permit')">
+                    <div class="key-item-icon">📋</div>
+                    <div class="key-item-text">
+                        Obtain occupancy permit (City or County, 3-4 day process)
+                        <div class="key-item-link">→ Occupancy Permit Guide</div>
+                    </div>
+                </div>
+                <div class="key-item clickable" onclick="event.stopPropagation(); openLink('listing-prep')">
+                    <div class="key-item-icon">📸</div>
+                    <div class="key-item-text">
+                        Julie preps listing (staging, photography, MLS details)
+                        <div class="key-item-link">→ Listing Prep Checklist</div>
+                    </div>
+                </div>
+                <div class="key-item clickable" onclick="event.stopPropagation(); openLink('pricing-confirmation')">
+                    <div class="key-item-icon">💵</div>
+                    <div class="key-item-text">
+                        Confirm pricing strategy (comps, market conditions, ownership approval)
+                        <div class="key-item-link">→ Pricing Confirmation Worksheet</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- PHASE 6 -->
+        <div class="phase-card clickable-card" onclick="openLink('phase6-main')">
+            <div class="phase-header">
+                <div class="phase-number">6</div>
+                <div>
+                    <h2 class="phase-title">Disposition & Close</h2>
+                    <p class="phase-duration">Timeline: 30-90+ days</p>
+                </div>
+            </div>
+            <p class="phase-description">
+                Strategic sale execution. Monitor market activity, adjust pricing when needed, pivot to BRRRR if necessary, negotiate offers, and close efficiently.
+            </p>
+            <div class="key-items">
+                <div class="key-item clickable" onclick="event.stopPropagation(); openLink('listing-strategy')">
+                    <div class="key-item-icon">📈</div>
+                    <div class="key-item-text">
+                        Listing strategy & price adjustments (0-14 days, 15-30 days, 31-45 days, 46+ pivot decision)
+                        <div class="key-item-link">→ Listing Strategy Guide</div>
+                    </div>
+                </div>
+                <div class="key-item clickable" onclick="event.stopPropagation(); openLink('brrrr-decision')">
+                    <div class="key-item-icon">🔄</div>
+                    <div class="key-item-text">
+                        BRRRR decision framework (when to pivot from flip to rental)
+                        <div class="key-item-link">→ BRRRR Decision Framework</div>
+                    </div>
+                </div>
+                <div class="key-item clickable" onclick="event.stopPropagation(); openLink('offer-evaluation')">
+                    <div class="key-item-icon">📊</div>
+                    <div class="key-item-text">
+                        Evaluate & negotiate offers (single/multiple offers, repair requests)
+                        <div class="key-item-link">→ Offer Evaluation Checklist</div>
+                    </div>
+                </div>
+                <div class="key-item clickable" onclick="event.stopPropagation(); openLink('closing-coordination')">
+                    <div class="key-item-icon">🏁</div>
+                    <div class="key-item-text">
+                        Closing coordination (inspection, appraisal, final walkthrough, utilities off)
+                        <div class="key-item-link">→ Closing Coordination Checklist</div>
+                    </div>
+                </div>
+                <div class="key-item clickable" onclick="event.stopPropagation(); openLink('final-pl')">
+                    <div class="key-item-icon">💰</div>
+                    <div class="key-item-text">
+                        Final P&L reconciliation (actual profit vs. projected, save HUD statement)
+                        <div class="key-item-link">→ Final P&L Reconciliation</div>
+                    </div>
+                </div>
+                <div class="key-item clickable" onclick="event.stopPropagation(); openLink('post-project')">
+                    <div class="key-item-icon">📝</div>
+                    <div class="key-item-text">
+                        Post-project analysis (what went right/wrong, lessons learned, improvements)
+                        <div class="key-item-link">→ Post-Project Analysis</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    
+    <script>
+        // YOUR LINKS
+        const LINKS = {
+            // Phase 1
+            'underwriting-checklist': 'https://docs.google.com/document/d/14_F5yzPpMMBH2Sv_WNr5yHA6ZP8-qoTzf0vakiBhI28/edit?tab=t.0',
+            'propwire': 'https://www.propwire.com',
+            'renovation-guide': 'https://samshikiar.github.io/dbs-renovation-cost/',
+            'underwriting-model': 'https://docs.google.com/spreadsheets/d/18zJrEb01IUDoKzY35qJwd_bmAwJLpxfn/edit?gid=324220438#gid=324220438',
+            'jurisdiction': 'https://data-stlcogis.opendata.arcgis.com/app/property-lookup',
+            'contractor-walkthrough': 'https://docs.google.com/document/d/1CcOeXRJADCeLKKmoR7r8qIGZPrivsdmFhVO7oSjvH-U/edit?tab=t.0',
+            'deal-summary': 'https://docs.google.com/document/d/1z5oDyCi8CTWoOixS84V1ToytShU3KXOy/edit',
+            'go-no-go': 'https://meet.google.com/landing?authuser=0',
+            
+            // Phase 2
+            'phase2-main': '#',
+            'submit-offer': '#',
+            'title-search': '#',
+            'due-diligence': 'https://docs.google.com/document/d/1eBGeWswEeSFjOdUwnPD6Wsfnk9PMyN4K/edit?usp=sharing&ouid=114448054097735181787&rtpof=true&sd=true',
+            'closing': 'https://docs.google.com/document/d/1cWVan84achLBlU0KptNZGtFbwvQd04wx/edit?usp=sharing&ouid=114448054097735181787&rtpof=true&sd=true',
+            'contractor-agreement': 'LINK_TO_CONTRACTOR_AGREEMENT',
+            'project-pl': 'https://docs.google.com/spreadsheets/d/1SPL072SR3dEgo_AkChbMBcoFtQeLPDXFQAzh-xC2abs/edit?gid=0#gid=0',
+            'log-costs': 'https://docs.google.com/spreadsheets/d/1SPL072SR3dEgo_AkChbMBcoFtQeLPDXFQAzh-xC2abs/edit?gid=0#gid=0',
+
+            // Phase 3
+            'phase3-main': '#',
+            'change-locks': '#',
+            'property-photos': '#',
+            'utilities': 'https://docs.google.com/document/d/1YgriVhRfKM0V-DSqYXb8vuTJQ2Dv6FI3/edit?usp=sharing&ouid=114448054097735181787&rtpof=true&sd=true',
+            'insurance': 'https://docs.google.com/document/d/1YgriVhRfKM0V-DSqYXb8vuTJQ2Dv6FI3/edit?usp=sharing&ouid=114448054097735181787&rtpof=true&sd=true',
+            'permits': 'https://docs.google.com/document/d/1YgriVhRfKM0V-DSqYXb8vuTJQ2Dv6FI3/edit?usp=sharing&ouid=114448054097735181787&rtpof=true&sd=true',
+            'dumpster': '#',
+            'project-tracker': 'https://docs.google.com/spreadsheets/d/1O3OR3FFyanAIHpbeV-JHpqTBZnS0Ni04/edit?usp=sharing&ouid=114448054097735181787&rtpof=true&sd=true',
+
+            // Phase 4
+            'phase4-main': '#',
+            'kickoff-meeting': 'https://docs.google.com/document/d/1TTYD5RuPg9FcJaAVZODUqYvK7U79U2Vu/edit?usp=sharing&ouid=114448054097735181787&rtpof=true&sd=true',
+            'material-selection': 'https://docs.google.com/spreadsheets/d/1NJoDc_3o6jPoiHOPs0FIGnnDTKmJnRJ-/edit?usp=sharing&ouid=114448054097735181787&rtpof=true&sd=true',
+            'weekly-progress': 'https://docs.google.com/spreadsheets/d/1JmxyBGsr3JcC2s3WBCpCingBZwxjX7pK/edit?usp=sharing&ouid=114448054097735181787&rtpof=true&sd=true',
+            'subcontractor-tracking': 'https://docs.google.com/spreadsheets/d/1UqzyrXNdZNh8YPzdmVRNbOSrsl7Q95Xb/edit?usp=sharing&ouid=114448054097735181787&rtpof=true&sd=true',
+            'site-management': 'https://docs.google.com/spreadsheets/d/1gi3TiiU7ouFVPiPHUqxlvFkodgG1R025/edit?usp=sharing&ouid=114448054097735181787&rtpof=true&sd=true',
+            'milestone-payments': 'https://docs.google.com/spreadsheets/d/1WubVXw4HkYk5BzRZLV93zTax2XchFO8i/edit?usp=sharing&ouid=114448054097735181787&rtpof=true&sd=true',
+            'change-orders': 'https://docs.google.com/document/d/1k-O0ibJisumAfSF0fRfm-9bBZJAIf3dF/edit?usp=sharing&ouid=114448054097735181787&rtpof=true&sd=true',
+            'photo-documentation': 'https://docs.google.com/document/d/1Zhyv4zm1rJUKNYa0iIw7NkYyDSgwwn6W/edit?usp=sharing&ouid=114448054097735181787&rtpof=true&sd=true',
+            'punch-list': 'https://docs.google.com/spreadsheets/d/1oyochxIG-1gi8_XJKZxo4CxLpud3H9_z/edit?usp=sharing&ouid=114448054097735181787&rtpof=true&sd=true',
+            'quality-control': 'https://docs.google.com/document/d/12fIbjg3_U1BO05KAtl6Q62pVxAGoeyYj/edit?usp=sharing&ouid=114448054097735181787&rtpof=true&sd=true',
+
+            // Phase 5
+            'phase5-main': '#',
+            'handoff-checklist': 'https://docs.google.com/document/d/1ul4I9DLaDWgc-qbh013xVE5zE5ewfdRb/edit?usp=sharing&ouid=114448054097735181787&rtpof=true&sd=true',
+            'occupancy-permit': 'https://docs.google.com/document/d/1O_R69Npvo0JkYFazGa9StgRgdu_flFdw/edit?usp=sharing&ouid=114448054097735181787&rtpof=true&sd=true',
+            'listing-prep': 'https://docs.google.com/document/d/1aZrnFe06iJU5Yi1FYw2FSBhO6mp44cSY/edit?usp=sharing&ouid=114448054097735181787&rtpof=true&sd=true',
+            'pricing-confirmation': 'https://docs.google.com/document/d/1f3JjK5_10vLuHqQqdXCrdpd31c-yKEhm/edit?usp=sharing&ouid=114448054097735181787&rtpof=true&sd=true',
+
+            // Phase 6
+            'phase6-main': '#',
+            'listing-strategy': 'https://docs.google.com/document/d/18VdHnz5qL9rm6mgwrMcoaEYpTzFDeddk/edit?usp=sharing&ouid=114448054097735181787&rtpof=true&sd=true',
+            'brrrr-decision': 'https://docs.google.com/document/d/1-kTyHaVAJWFmbwgYi7TZwPGZdyyBrwjA/edit?usp=sharing&ouid=114448054097735181787&rtpof=true&sd=true',
+            'offer-evaluation': 'https://docs.google.com/document/d/10HCP5F0ViK_kwxoghTiMc5gLHGgmAZCa/edit?usp=sharing&ouid=114448054097735181787&rtpof=true&sd=true',
+            'closing-coordination': 'https://docs.google.com/document/d/10WmBRRygqVqdbVm-AQCyWkr0LyQuF0zM/edit?usp=sharing&ouid=114448054097735181787&rtpof=true&sd=true',
+            'final-pl': 'https://docs.google.com/document/d/1eneiuuh4vlRb72IRZDWWGdl3G18cnTAx/edit?usp=sharing&ouid=114448054097735181787&rtpof=true&sd=true',
+            'post-project': 'https://docs.google.com/document/d/1dFxi8l_O6uzDRfOUkGQX58Y3ykozpkoq/edit?usp=sharing&ouid=114448054097735181787&rtpof=true&sd=true'
+        };
+        
+        function openLink(key) {
+            const url = LINKS[key];
+            if (url && url.startsWith('http')) {
+                window.open(url, '_blank');
+            } else {
+                // Reminder-only boxes - do nothing on click
+                return;
+            }
+        }
+    </script>
+</body>
+</html>
